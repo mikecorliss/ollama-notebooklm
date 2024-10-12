@@ -17,7 +17,7 @@ short_description: Personalised Podcasts For All - Available in 13 Languages
 This project is inspired by the NotebookLM tool, and implements it with open-source LLMs and text-to-speech models. This tool processes the content of a PDF, generates a natural dialogue suitable for an audio podcast, and outputs it as an MP3 file.
 
 Built with:
-- [Llama 3.1 405B 🦙](https://huggingface.co/meta-llama/Llama-3.1-405B) via [Fireworks AI 🎆](https://fireworks.ai/)
+- [Any model you wish on Ollama! 🐧](https://ollama.com/)
 - [MeloTTS 🐚](https://huggingface.co/myshell-ai/MeloTTS-English)
 - [Bark 🐶](https://huggingface.co/suno/bark)
 - [Jina Reader 🔍](https://jina.ai/reader/)
@@ -34,7 +34,7 @@ To set up the project, follow these steps:
 
 1. **Clone the repository:**
    ```bash
-   git clone https://github.com/gabrielchua/open-notebooklm.git
+   git clone https://github.com/mikecorliss/open-notebooklm.git
    cd open-notebooklm
    ```
 
@@ -51,24 +51,27 @@ To set up the project, follow these steps:
 
 ## Usage
 
-1. **Set up API Key(s):**
-   For this project, I am using LLama 3.1 405B hosted on Fireworks API as its JSON Mode supports passing a pydantic object. So, please set the API key as the `FIREWORKS_API_KEY` environment variable
+1. Update constants.py:**
+   In my fork, i've moved everything to ollama,
+   as it utilizes the same openai api interface.
+   Update your model you're using, and change the URL
+   if you're not hosting it on the machine or on a different port.
 
-2. **Run the application:**
+3. **Run the application:**
    ```bash
    python app.py
    ```
    This will launch a Gradio interface in your web browser.
 
-3. **Upload a PDF:**
+4. **Upload a PDF:**
    Upload the PDF document you want to convert into a podcast.
 
-4. **Generate Audio:**
+5. **Generate Audio:**
    Click the button to start the conversion process. The output will be an MP3 file containing the podcast dialogue.
 
 ## Acknowledgements
 
-This project is forked from [`knowsuchagency/pdf-to-podcast`](https://github.com/knowsuchagency/pdf-to-podcast)
+This project is forked from [`gabrielchua/open-notebooklm`](https://github.com/gabrielchua/open-notebooklm)
 
 ## License
 
