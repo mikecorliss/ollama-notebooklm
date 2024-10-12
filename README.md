@@ -1,5 +1,5 @@
 ---
-title: Open NotebookLM
+title: Ollama NotebookLM
 emoji: 🎙️
 colorFrom: purple
 colorTo: red
@@ -10,7 +10,7 @@ pinned: false
 short_description: Personalised Podcasts For All - Available in 13 Languages
 ---
 
-# Open NotebookLM
+# Ollama NotebookLM
 
 ## Overview
 
