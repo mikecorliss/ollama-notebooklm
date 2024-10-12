@@ -42,6 +42,7 @@ from constants import (
     UI_OUTPUTS,
     UI_SHOW_API,
 )
+os.environ['SUNO_USE_SMALL_MODELS'] = SUNO_USE_SMALL_MODELS
 from prompts import (
     LANGUAGE_MODIFIER,
     LENGTH_MODIFIERS,
@@ -51,6 +52,7 @@ from prompts import (
 )
 from schema import ShortDialogue, MediumDialogue
 from utils import generate_podcast_audio, generate_script, parse_url
+
 
 
 def generate_podcast(
