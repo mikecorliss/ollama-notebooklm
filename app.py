@@ -10,13 +10,6 @@ from pathlib import Path
 from tempfile import NamedTemporaryFile
 from typing import List, Tuple, Optional
 
-# Third-party imports
-import gradio as gr
-import random
-from loguru import logger
-from pypdf import PdfReader
-from pydub import AudioSegment
-
 # Local imports
 from constants import (
     APP_TITLE,
@@ -43,6 +36,14 @@ from constants import (
     UI_SHOW_API,
 )
 os.environ['SUNO_USE_SMALL_MODELS'] = SUNO_USE_SMALL_MODELS
+
+# Third-party imports
+import gradio as gr
+import random
+from loguru import logger
+from pypdf import PdfReader
+from pydub import AudioSegment
+
 from prompts import (
     LANGUAGE_MODIFIER,
     LENGTH_MODIFIERS,
