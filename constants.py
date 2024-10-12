@@ -60,6 +60,7 @@ SUNO_LANGUAGE_MAPPING = {
     "Spanish": "es",
     "Turkish": "tr",
 }
+SUNO_USE_SMALL_MODELS=True
 
 # General audio-related constants
 NOT_SUPPORTED_IN_MELO_TTS = list(
