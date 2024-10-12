@@ -35,7 +35,7 @@ To set up the project, follow these steps:
 1. **Clone the repository:**
    ```bash
    git clone https://github.com/mikecorliss/ollama-notebooklm.git
-   cd open-notebooklm
+   cd ollama-notebooklm
    ```
 
 2. **Create a virtual environment and activate it:**
