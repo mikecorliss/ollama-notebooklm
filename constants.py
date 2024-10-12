@@ -80,7 +80,7 @@ UI_DESCRIPTION = """
 Generate Podcasts from PDFs using open-source AI.
 
 Built with:
-- [Llama 3.1 405B 🦙](https://huggingface.co/meta-llama/Llama-3.1-405B) via [Fireworks AI 🎆](https://fireworks.ai/)
+- [Any model you wish on Ollama! 🐧](https://ollama.com/)
 - [MeloTTS 🐚](https://huggingface.co/myshell-ai/MeloTTS-English)
 - [Bark 🐶](https://huggingface.co/suno/bark)
 - [Jina Reader 🔍](https://jina.ai/reader/)
