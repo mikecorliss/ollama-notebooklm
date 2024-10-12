@@ -22,12 +22,11 @@ from scipy.io.wavfile import write as write_wav
 
 # Local imports
 from constants import (
-    FIREWORKS_API_KEY,
-    FIREWORKS_BASE_URL,
-    FIREWORKS_MODEL_ID,
-    FIREWORKS_MAX_TOKENS,
-    FIREWORKS_TEMPERATURE,
-    FIREWORKS_JSON_RETRY_ATTEMPTS,
+    OLLAMA_BASE_URL,
+    OLLAMA_MODEL_ID,
+    OLLAMA_MAX_TOKENS,
+    OLLAMA_TEMPERATURE,
+    OLLAMA_JSON_RETRY_ATTEMPTS,
     MELO_API_NAME,
     MELO_TTS_SPACES_ID,
     MELO_RETRY_ATTEMPTS,
@@ -39,7 +38,7 @@ from constants import (
 from schema import ShortDialogue, MediumDialogue
 
 # Initialize clients
-fw_client = OpenAI(base_url=FIREWORKS_BASE_URL)
+fw_client = OpenAI(base_url=OLLAMA_BASE_URL)
 hf_client = Client(MELO_TTS_SPACES_ID)
 
 # Download and load all models for Bark
@@ -58,14 +57,14 @@ def generate_script(
     response_json = response.choices[0].message.content
 
     # Validate the response
-    for attempt in range(FIREWORKS_JSON_RETRY_ATTEMPTS):
+    for attempt in range(OLLAMA_JSON_RETRY_ATTEMPTS):
         try:
             first_draft_dialogue = output_model.model_validate_json(response_json)
             break
         except ValidationError as e:
-            if attempt == FIREWORKS_JSON_RETRY_ATTEMPTS - 1:  # Last attempt
+            if attempt == OLLAMA_JSON_RETRY_ATTEMPTS - 1:  # Last attempt
                 raise ValueError(
-                    f"Failed to parse dialogue JSON after {FIREWORKS_JSON_RETRY_ATTEMPTS} attempts: {e}"
+                    f"Failed to parse dialogue JSON after {OLLAMA_JSON_RETRY_ATTEMPTS} attempts: {e}"
                 ) from e
             error_message = (
                 f"Failed to parse dialogue JSON (attempt {attempt + 1}): {e}"
@@ -80,7 +79,7 @@ def generate_script(
     system_prompt_with_dialogue = f"{system_prompt}\n\nHere is the first draft of the dialogue you provided:\n\n{first_draft_dialogue}."
 
     # Validate the response
-    for attempt in range(FIREWORKS_JSON_RETRY_ATTEMPTS):
+    for attempt in range(OLLAMA_JSON_RETRY_ATTEMPTS):
         try:
             response = call_llm(
                 system_prompt_with_dialogue,
@@ -92,9 +91,9 @@ def generate_script(
             )
             break
         except ValidationError as e:
-            if attempt == FIREWORKS_JSON_RETRY_ATTEMPTS - 1:  # Last attempt
+            if attempt == OLLAMA_JSON_RETRY_ATTEMPTS - 1:  # Last attempt
                 raise ValueError(
-                    f"Failed to improve dialogue after {FIREWORKS_JSON_RETRY_ATTEMPTS} attempts: {e}"
+                    f"Failed to improve dialogue after {OLLAMA_JSON_RETRY_ATTEMPTS} attempts: {e}"
                 ) from e
             error_message = f"Failed to improve dialogue (attempt {attempt + 1}): {e}"
             system_prompt_with_dialogue += f"\n\nPlease return a VALID JSON object. This was the earlier error: {error_message}"
@@ -108,9 +107,9 @@ def call_llm(system_prompt: str, text: str, dialogue_format: Any) -> Any:
             {"role": "system", "content": system_prompt},
             {"role": "user", "content": text},
         ],
-        model=FIREWORKS_MODEL_ID,
-        max_tokens=FIREWORKS_MAX_TOKENS,
-        temperature=FIREWORKS_TEMPERATURE,
+        model=OLLAMA_MODEL_ID,
+        max_tokens=OLLAMA_MAX_TOKENS,
+        temperature=OLLAMA_TEMPERATURE,
         response_format={
             "type": "json_object",
             "schema": dialogue_format.model_json_schema(),
