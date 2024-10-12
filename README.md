@@ -34,7 +34,7 @@ To set up the project, follow these steps:
 
 1. **Clone the repository:**
    ```bash
-   git clone https://github.com/mikecorliss/open-notebooklm.git
+   git clone https://github.com/mikecorliss/ollama-notebooklm.git
    cd open-notebooklm
    ```
 
