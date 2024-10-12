@@ -51,7 +51,7 @@ To set up the project, follow these steps:
 
 ## Usage
 
-1. Update constants.py:**
+1. **Update constants.py:**
    In my fork, i've moved everything to ollama,
    as it utilizes the same openai api interface.
    Update your model you're using, and change the URL
