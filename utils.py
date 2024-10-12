@@ -38,7 +38,7 @@ from constants import (
 from schema import ShortDialogue, MediumDialogue
 
 # Initialize clients
-fw_client = OpenAI(base_url=OLLAMA_BASE_URL)
+ol_client = OpenAI(base_url=OLLAMA_BASE_URL, api_key="ollama")
 hf_client = Client(MELO_TTS_SPACES_ID)
 
 # Download and load all models for Bark
@@ -102,7 +102,7 @@ def generate_script(
 
 def call_llm(system_prompt: str, text: str, dialogue_format: Any) -> Any:
     """Call the LLM with the given prompt and dialogue format."""
-    response = fw_client.chat.completions.create(
+    response = ol_client.chat.completions.create(
         messages=[
             {"role": "system", "content": system_prompt},
             {"role": "user", "content": text},
