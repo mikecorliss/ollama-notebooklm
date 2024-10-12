@@ -39,7 +39,7 @@ from constants import (
 from schema import ShortDialogue, MediumDialogue
 
 # Initialize clients
-fw_client = OpenAI(base_url=FIREWORKS_BASE_URL, api_key=FIREWORKS_API_KEY)
+fw_client = OpenAI(base_url=FIREWORKS_BASE_URL)
 hf_client = Client(MELO_TTS_SPACES_ID)
 
 # Download and load all models for Bark
