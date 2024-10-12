@@ -228,5 +228,5 @@ demo = gr.Interface(
 )
 
 if __name__ == "__main__":
-    demo.launch(show_api=UI_SHOW_API server_port=9890 server_name=0.0.0.0)
+    demo.launch(show_api=UI_SHOW_API, server_port=9890, server_name=0.0.0.0)
     
