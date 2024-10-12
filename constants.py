@@ -21,13 +21,12 @@ ERROR_MESSAGE_NOT_SUPPORTED_IN_MELO_TTS = "The selected language is not supporte
 ERROR_MESSAGE_READING_PDF = "Error reading the PDF file"
 ERROR_MESSAGE_TOO_LONG = "The total content is too long. Please ensure the combined text from PDFs and URL is fewer than {CHARACTER_LIMIT} characters."
 
-# Fireworks API-related constants
-FIREWORKS_API_KEY = os.getenv("FIREWORKS_API_KEY")
-FIREWORKS_BASE_URL = "https://api.fireworks.ai/inference/v1"
-FIREWORKS_MAX_TOKENS = 16_384
-FIREWORKS_MODEL_ID = "accounts/fireworks/models/llama-v3p1-405b-instruct"
-FIREWORKS_TEMPERATURE = 0.1
-FIREWORKS_JSON_RETRY_ATTEMPTS = 3
+# Ollama API-related constants
+OLLAMA_BASE_URL = "http://localhost:11434"
+OLLAMA_MAX_TOKENS = 16_384
+OLLAMA_MODEL_ID = "llama3.2"
+OLLAMA_TEMPERATURE = 0.1
+OLLAMA_JSON_RETRY_ATTEMPTS = 3
 
 # MeloTTS
 MELO_API_NAME = "/synthesize"
